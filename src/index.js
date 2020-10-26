@@ -1,8 +1,11 @@
 const express = require("express");
+const User = require("../models").user;
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("hello world");
+app.get("/", async (req, res) => {
+  const users = await User.findAll();
+
+  res.send(users);
 });
 
 const PORT = 4000;
